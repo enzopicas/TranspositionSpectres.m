@@ -15,7 +15,7 @@ function tracerSpectre(spectre)
     end
     
     figure;
-    plot(valeursREF, REF); ylim([0.9 , 1]);
+    plot(valeursREF, REF); ylim([0.9 , 1]); xlim([300 , 800]);
     xlabel('Longueur d''onde en nm'); title('Spectre de raies');
     
 end

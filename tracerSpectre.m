@@ -7,12 +7,15 @@ function tracerSpectre(spectre)
     
     for i = 1:length(REF)
         for n = 1:length(spectre)
-           if ((spectre(n) > i+300) && (spectre(n) < i+301))
+           if ((spectre(n) > i+Lmin) && (spectre(n) < i+(Lmin+1)))
                REF(i) = REF(i) + 1;
+               REF(i+1) = REF(i+1) +1;
            end
         end
     end
     
-    plot(valeursREF, REF);
+    figure;
+    plot(valeursREF, REF); ylim([0.9 , 1]);
+    xlabel('Longueur d''onde en nm'); title('Spectre de raies');
     
 end

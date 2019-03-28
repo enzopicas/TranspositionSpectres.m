@@ -8,15 +8,17 @@ close all;
     %--------------------------
     % TRANSPOSITION
     %--------------------------
-    Fmin = 280; Fmax = 8000;
+    Fmin = 500; Fmax = 6000;
     Lmin = 300; Lmax = 800;
     
     %Calcul de la nouvelle échelle
-    a=(Fmax-Fmin)/(Lmax-Lmin); %a=(log10(Fmax)-log10(Fmin))/(Lmax-Lmin);
+    a=(Fmax-Fmin)/(Lmax-Lmin);
     b=Fmax-a*Lmax;
     spectre_Hz = spectre_nm * a + b;
     
-    %Fabrication du signal audio
+    %--------------------------
+    % SIGNAL AUDIO
+    %--------------------------
     fe = 8000; N = 8192; t = (1:N)/fe;
     for i = 1:length(spectre_Hz)
         audio = sin(2*pi*spectre_Hz(i)*t);

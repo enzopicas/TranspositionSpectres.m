@@ -5,7 +5,7 @@ function tracerSpectre(spectre)
     REF = zeros((Lmax-Lmin),1); %Une case par longueur d'onde
     valeursREF = Lmin:Lmax-1; %Uniquement pour tracer à la bonne échelle x
     
-    for i = 1:length(spectre)
+    for i = 1:size(spectre,1)
         for n = 1:length(REF)
            if ((spectre(i,1) > n+Lmin) && (spectre(i,1) < n+(Lmin+1)))
                REF(n) = spectre(i,2);

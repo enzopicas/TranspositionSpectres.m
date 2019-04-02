@@ -1,3 +1,10 @@
+% Cette fonction permet, à partir d'un spectre au format texte, de tracer
+% le spectre (longueurs d'onde (nm) en fonction de l'amplitude des raies)
+% -----Prototype de la fonction-----
+% tracerSpectre(spectre)
+%
+% spectre = nom du tableau avec les informations du spectre
+
 function tracerSpectre(spectre)
     
     Lmax=800; Lmin=300;

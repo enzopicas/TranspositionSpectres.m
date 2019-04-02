@@ -11,7 +11,7 @@
 %---------Fonction liée---------
 % tracerSpectre.m
 
-function [spectre_nm, spectre_Hz] = transposition(spectre_txt)
+function [audio] = transposition(spectre_txt)
 close all;
 
     spectre_nm = load(spectre_txt); %Chargement du spectre
@@ -32,13 +32,15 @@ close all;
     %--------------------------
     % SIGNAL AUDIO
     %--------------------------
-    fe = 44100; T = 1;
+    fe = 44100; T = 5;
     t = 0:1/fe:T;
     
-    audio = [];
+    audio = zeros(size(t));
     for i = 1:length(spectre_Hz)
-        audio = [audio sin(2*pi*spectre_Hz(i)*t)];
+        audio = audio + spectre_nm(i,2)*sin(2*pi*spectre_Hz(i)*t);
     end
+    
+    audio = audio/max(audio);
     
     player = audioplayer(audio, fe);
     playblocking(player)

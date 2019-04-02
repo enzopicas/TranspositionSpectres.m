@@ -1,11 +1,12 @@
 # Projet de transposition de spectre
 
-Fonction principale du projet : transposition.m
+Script principal du projet : scriptPrincipal.m
 
 Ce projet consiste à transposer un spectre de raies en un signal audible.
-Le spectre de raies doit être entré en paramètre de la fonction au travers d'un fichier texte. 
-Les différentes longueurs d'onde doivent être entrées ligne par ligne, avec une décimale différente de 0.
-La fonction renvoie une figure représentant les différentes raies, et joue le son associé au spectre.
+Le spectre de raies doit être entré dans un fichier texte. 
+Dans la première colonne, indiquer les différentes longueurs d'onde en nm ou en A.
+Dans la seconde colonne, indiquer les différentes amplitudes des spectres.
 
-## Fonction liée
+## Fonctions liées
 tracerSpectre.m
+transposition.m

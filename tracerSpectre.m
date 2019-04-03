@@ -4,8 +4,9 @@
 % tracerSpectre(spectre)
 %
 % spectre = nom du tableau avec les informations du spectre
+% save = enregistrer le graphe (1 pour enregistrer)
 
-function tracerSpectre(spectre)
+function tracerSpectre(spectre, save)
     
     Lmax=800; Lmin=300;
 
@@ -24,7 +25,7 @@ function tracerSpectre(spectre)
     A = round(length(valeursREF)/3);
     B = round(2*length(valeursREF)/3);
     
-    figure;
+    f1 = figure;
     hold on
     plot(valeursREF(1:A), REF(1:A),'b');
     plot(valeursREF(A:B), REF(A:B),'g');
@@ -35,4 +36,8 @@ function tracerSpectre(spectre)
     xlabel('Longueur d''onde en nm'); 
     ylabel('Amplitude des raies');
     title('Spectre de raies');
+    
+    if save == 1
+        saveas(f1, 'Spectre de raies');
+    end
 end

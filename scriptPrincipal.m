@@ -24,7 +24,7 @@ end
 
 %------------------------------
 % Tracé du spectre
-tracerSpectre(spectre_nm);
+tracerSpectre(spectre_nm, 0);
 
 %------------------------------
 % Transposition du spectre
@@ -37,3 +37,7 @@ audio = transposition(spectre_nm, T, methode, fe);
 player = audioplayer(audio, fe);
 playblocking(player)
 clear player
+
+%------------------------------
+% Enregistrement du signal
+%audiowrite('spectreAudio.wav', audio, 44100);

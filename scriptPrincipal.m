@@ -29,7 +29,8 @@ tracerSpectre(spectre_nm);
 %------------------------------
 % Transposition du spectre
 fe = 44100; T = 3;
-audio = transposition(spectre_nm, T, fe);
+methode = 3;
+audio = transposition(spectre_nm, T, methode, fe);
 
 %------------------------------
 % Lecture du signal

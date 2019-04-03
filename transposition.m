@@ -61,4 +61,11 @@ function [audio] = transposition(spectre_nm, T, methode, fe)
         audio = audio/max(audio);
     end
     
+    %--------------------------
+    % SIGNAL AUDIO
+    %--------------------------
+    figure;
+    plot([fe/length(t):fe/length(t):fe],abs(fft(audio)));
+    title('Spectogramme'); xlabel('Temps (s)'); ylabel('Frequence (Hz)');
+    
 end

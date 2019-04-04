@@ -1,5 +1,7 @@
 # Projet de transposition de spectre
 
+*Copyright (c) University Paul Sabatier Toulouse 3 and contributors. All rights reserved.*
+
 **Script principal du projet : scriptPrincipal.m**
 
 Ce projet consiste à transposer un spectre de raies en un signal audible.
@@ -12,5 +14,5 @@ Site Internet inclunt plusieurs spectres d'atomes :
 **http://astro.u-strasbg.fr/~koppen/discharge/index.html**
 
 ## Fonctions liées
-tracerSpectre.m
-transposition.m
+* tracerSpectre.m
+* transposition.m

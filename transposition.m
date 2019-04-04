@@ -8,32 +8,35 @@
 % fe = fréquence d'échentillonage (Hz) valeur par défaut 44100 Hz
 % methode = choix de la méthode de transposition
 %   1 : Pseudo mélodie avec transposition linéaire
-%   2 : Un seul son avec transposition linéaire
-%  +3+ : Un seul son avec f1 = L1 ; f2 = 3/2L1 ; f3 = L3/L2 f2 ...
+%   +2+ : Un seul son avec transposition linéaire
+%   3 : Un seul son avec f1 = L1 ; f2 = 3/2L1 ; f3 = L3/L2 f2 ...
 
 function [audio] = transposition(spectre_nm, T, methode, fe)
     
     %--------------------------
     % TRANSPOSITION
     %--------------------------
-    Fmin = 500; Fmax = 6000; % Gamme de fréquences
+    Fmin = 125; Fmax = 4000; % Gamme de fréquences
+    Fref = 261.626;
     Lmin = 300; Lmax = 800; % Longueurs d'onde dans le domaine visible
+    
+    spectre_OptHz = sort(1./spectre_nm(:,1));
     
     if nargin < 3
         methode = 3;
     end
     
     if methode == 1 || methode == 2 % Transposition linéaire
-        a=(Fmax-Fmin)/(Lmax-Lmin);
-        b=Fmax-a*Lmax;
-        spectre_Hz = spectre_nm(:,1) * a + b;
+        a=(Fmax-Fmin)/(1/Lmin-1/Lmax);
+        b=Fmin-a*(1/Lmax);
+        spectre_Hz = (1./spectre_nm(:,1)) * a + b;
+        spectre_Hz = sort(spectre_Hz);
     
     else % Transposition avec f2 tierce
-        spectre_Hz = zeros(size(spectre_nm(:,1)));
-        spectre_Hz(1) = spectre_nm(1,1);
+        spectre_Hz(1) = Fref;
         spectre_Hz(2) = (3/2) * spectre_Hz(1);
-        for i = 3:length(spectre_Hz)
-            spectre_Hz(i) = (spectre_nm(i,1)/spectre_nm(i-1,1)) * spectre_Hz(i-1);
+        for i = 3:length(spectre_OptHz)
+            spectre_Hz(i) = (spectre_OptHz(i)/spectre_OptHz(i-1)) * spectre_Hz(i-1);
         end
     end
     
@@ -58,8 +61,9 @@ function [audio] = transposition(spectre_nm, T, methode, fe)
             audio = audio + spectre_nm(i,2)*sin(2*pi*spectre_Hz(i)*t);
         end
 
-        audio = audio/max(audio);
     end
+    
+    audio = audio/max(audio);
     
     %--------------------------
     % SIGNAL AUDIO

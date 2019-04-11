@@ -100,8 +100,10 @@ function [audio] = transposition(spectre_nm, T, methode, fe)
     
     audio = audio/max(audio);
     
-    figure;
-    plot(0:1/fe:T,audio); title('Signal audio en temporel');
+    if methode ~= 1
+        figure;
+        plot(0:1/fe:T,audio); title('Signal audio en temporel');
+    end
     
     %--------------------------
     % FFT

@@ -22,6 +22,7 @@ function tracerSpectre(spectre, save)
     end
     
     %Tracé de la figure
+    #{
     A = round(length(valeursREF)/3);
     B = round(2*length(valeursREF)/3);
     
@@ -36,6 +37,10 @@ function tracerSpectre(spectre, save)
     xlabel('Longueur d''onde en nm'); 
     ylabel('Amplitude des raies');
     title('Spectre de raies');
+    #}
+    
+    f1 = imagesc([300 800], [], REF')
+    colormap(jet);
     
     if save == 1
         saveas(f1, 'Spectre de raies');
